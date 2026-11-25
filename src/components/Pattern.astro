@@ -1,0 +1,9 @@
+---
+// Decorative "tunnel" lines, same geometry as the Figma "V2/Pattern lines" component.
+const rects = Array.from({ length: 17 }, (_, i) => ({ x: i * 22, y: i * 26, rx: 40 + i * 6 }));
+---
+<svg class="pattern" viewBox="0 0 760 880" preserveAspectRatio="none" aria-hidden="true">
+  {rects.map(({ x, y, rx }) => (
+    <rect x={x + 0.5} y={y + 0.5} width={759 - 2 * x} height={879 - 2 * y} rx={rx} />
+  ))}
+</svg>

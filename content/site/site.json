@@ -1,0 +1,74 @@
+{
+  "phone": "646 663 4430",
+  "footer": {
+    "tagline": "Criminal, federal, DWI, and disciplinary defense in New York.",
+    "availability": "Available 24/7 for urgent criminal matters.",
+    "defenseLinks": [
+      {
+        "label": "Criminal Defense",
+        "url": "#"
+      },
+      {
+        "label": "Federal Defense",
+        "url": "#"
+      },
+      {
+        "label": "DWI Defense",
+        "url": "#"
+      },
+      {
+        "label": "Sex Crimes Defense",
+        "url": "#"
+      },
+      {
+        "label": "Fraud & White Collar",
+        "url": "#"
+      },
+      {
+        "label": "Title IX Defense",
+        "url": "#"
+      }
+    ],
+    "exploreLinks": [
+      {
+        "label": "Results & Media",
+        "url": "#"
+      },
+      {
+        "label": "Client Reviews",
+        "url": "#"
+      },
+      {
+        "label": "Attorneys",
+        "url": "#"
+      },
+      {
+        "label": "Resources",
+        "url": "#"
+      },
+      {
+        "label": "Contact",
+        "url": "#"
+      },
+      {
+        "label": "Payment Portal",
+        "url": "#"
+      }
+    ],
+    "offices": [
+      {
+        "name": "Manhattan",
+        "street": "26 Broadway, 3rd Floor",
+        "city": "New York, NY 10004",
+        "mapUrl": "#"
+      },
+      {
+        "name": "Lynbrook",
+        "street": "300 Merrick Road, Suite 403",
+        "city": "Lynbrook, NY 11563",
+        "mapUrl": "#"
+      }
+    ],
+    "legal": "Attorney Advertising. This website provides general information and is not legal advice. Viewing the site or contacting the firm does not create an attorney client relationship. Prior results do not guarantee a similar outcome."
+  }
+}

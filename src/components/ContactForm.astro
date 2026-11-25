@@ -1,0 +1,44 @@
+---
+/**
+ * Consultation form. Netlify Forms picks it up at deploy time because of
+ * `data-netlify="true"`; submissions appear in Netlify → Forms and can be
+ * emailed to the firm. `bot-field` is a hidden honeypot against spam.
+ */
+import Icon from './Icon.astro';
+
+interface Props {
+  submitLabel?: string | null;
+  disclaimer?: string | null;
+  fields?: { submit?: string; disclaimer?: string };
+}
+const { submitLabel, disclaimer, fields = {} } = Astro.props;
+const matters = ['Criminal charge', 'Federal investigation', 'DWI or vehicle', 'Sex offense', 'Fraud or white collar', 'Title IX or discipline', 'Civil rights', 'Other'];
+const prefs = ['Phone call', 'Text message', 'Email'];
+---
+<form class="form" name="consultation" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="consultation" />
+  <p class="visually-hidden"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+  <div class="row">
+    <div class="field"><label for="f-name">Full name (required)</label><input id="f-name" name="name" autocomplete="name" required /></div>
+    <div class="field"><label for="f-phone">Phone number (required)</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" required /></div>
+  </div>
+  <div class="row">
+    <div class="field"><label for="f-email">Email address (optional)</label><input id="f-email" name="email" type="email" autocomplete="email" /></div>
+    <div class="field"><label for="f-matter">Matter type (required)</label>
+      <select id="f-matter" name="matter" required>
+        <option value="">Select a matter</option>
+        {matters.map((m) => <option>{m}</option>)}
+      </select>
+    </div>
+  </div>
+  <div class="field"><label for="f-court">County or court (optional)</label><input id="f-court" name="court" /></div>
+  <div class="field"><label for="f-summary">Short summary (optional, 750 characters maximum)</label><textarea id="f-summary" name="summary" maxlength="750"></textarea></div>
+  <fieldset class="field" style="border:0">
+    <legend class="label-s secondary" style="margin-bottom:8px">Preferred contact</legend>
+    <div class="options">
+      {prefs.map((p, i) => <label class="option"><input type="radio" name="contact_preference" value={p} checked={i === 0} />{p}</label>)}
+    </div>
+  </fieldset>
+  <button class="btn btn--dark btn--block" type="submit" data-tina-field={fields.submit}>{submitLabel} <Icon name="arrow-right" /></button>
+  <p class="disclaimer caption" data-tina-field={fields.disclaimer}><Icon name="lock" />{disclaimer}</p>
+</form>

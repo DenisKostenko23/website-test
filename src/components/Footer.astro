@@ -1,0 +1,47 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import Icon from './Icon.astro';
+import { items, tel, type Site } from '../lib/data';
+
+interface Props { site?: Site | null }
+const { site } = Astro.props;
+const f = site?.footer;
+const year = new Date().getFullYear();
+---
+<footer class="footer dark">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand body-s">
+        <img class="logo" src="/assets/logo.svg" alt="Lebedin Kofman LLP" style="height:40px" />
+        {f && <p data-tina-field={tinaField(f, 'tagline')}>{f.tagline}</p>}
+        {f && <p data-tina-field={tinaField(f, 'availability')}>{f.availability}</p>}
+        {site && <a class="heading-m" href={tel(site.phone)} data-tina-field={tinaField(site, 'phone')}><Icon name="phone" />{site.phone}</a>}
+      </div>
+      <div class="footer__col"><span class="eyebrow">Defense</span>
+        <ul class="body-s">
+          {items(f?.defenseLinks).map((l) => <li><a href={l.url ?? '#'} data-tina-field={tinaField(l)}>{l.label}</a></li>)}
+        </ul>
+      </div>
+      <div class="footer__col"><span class="eyebrow">Offices</span>
+        <div>
+          {items(f?.offices).map((o) => (
+            <div class="office body-s" data-tina-field={tinaField(o)}>
+              <strong>{o.name}</strong><span>{o.street}</span><span>{o.city}</span>
+              <a href={o.mapUrl ?? '#'}>{o.name} directions <Icon name="arrow-up-right" /></a>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="footer__col"><span class="eyebrow">Explore</span>
+        <ul class="body-s">
+          {items(f?.exploreLinks).map((l) => <li><a href={l.url ?? '#'} data-tina-field={tinaField(l)}>{l.label}</a></li>)}
+        </ul>
+      </div>
+    </div>
+    {f && <p class="footer__legal caption" data-tina-field={tinaField(f, 'legal')}>{f.legal}</p>}
+    <div class="footer__bottom caption">
+      <span>© {year} Lebedin Kofman LLP</span>
+      <nav><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">Accessibility</a><a href="#">Terms &amp; Legal Disclaimer</a></nav>
+    </div>
+  </div>
+</footer>

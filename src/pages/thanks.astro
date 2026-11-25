@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import { getSite, tel } from '../lib/data';
+const site = (await getSite()).data?.site;
+---
+<Base title="Thank you | Lebedin Kofman LLP">
+  <Header site={site} />
+  <main class="section thanks">
+    <div class="container">
+      <span class="eyebrow">Request received</span>
+      <h1 class="display-m">Thank you. An attorney will contact you shortly.</h1>
+      <p class="body-m secondary">If you were arrested, contacted by police, or have a court date soon, call the firm now.</p>
+      <div class="hero__actions">
+        <a class="btn btn--dark" href={tel(site?.phone)}>Call {site?.phone}</a>
+        <a class="btn btn--outline-dark" href="/">Back to the homepage</a>
+      </div>
+    </div>
+  </main>
+</Base>

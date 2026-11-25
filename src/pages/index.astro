@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HomeBody from '../components/HomeBody.astro';
+import { getHome, getSite } from '../lib/data';
+import { islands } from '../lib/islands';
+
+const home = (await getHome()).data?.home;
+const site = (await getSite()).data?.site;
+---
+<Base title={home?.seoTitle ?? 'Lebedin Kofman LLP'} description={home?.seoDescription}>
+  <TinaIsland name="header" wrapper={islands.header.wrapper}><Header site={site} /></TinaIsland>
+  <TinaIsland name="home" wrapper={islands.home.wrapper} primary><HomeBody data={home} /></TinaIsland>
+  <TinaIsland name="footer" wrapper={islands.footer.wrapper}><Footer site={site} /></TinaIsland>
+</Base>

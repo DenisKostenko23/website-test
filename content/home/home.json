@@ -1,0 +1,269 @@
+{
+  "seoTitle": "New York Criminal Defense Lawyers | Lebedin Kofman LLP",
+  "seoDescription": "Lebedin Kofman LLP defends serious criminal, federal, DWI, sex offense, fraud, and Title IX matters across New York City, Long Island, EDNY, and SDNY.",
+  "hero": {
+    "badge": "New York Criminal Defense Lawyers",
+    "title": "Arrested or Under Investigation?",
+    "titleMuted": "Put an Experienced Defense Team Between You and the Government.",
+    "text": "Lebedin Kofman LLP defends serious criminal, federal, DWI, sex offense, fraud, and Title IX matters across New York City, Long Island, EDNY, and SDNY. Speak directly with an attorney before you make a statement, appear in court, or turn over evidence.",
+    "buttonLabel": "Request a Free Consultation",
+    "note": "Available 24/7 for urgent criminal matters. Free consultation.",
+    "image": "/assets/attorneys.jpg",
+    "imageCaption": "Lebedin Kofman LLP",
+    "imageSubcaption": "New York defense. Personal attention."
+  },
+  "trust": [
+    {
+      "title": "State & Federal",
+      "text": "New York courts, EDNY & SDNY",
+      "stars": false
+    },
+    {
+      "title": "Two New York Offices",
+      "text": "Manhattan & Lynbrook",
+      "stars": false
+    },
+    {
+      "title": "Representative Matters",
+      "text": "Results & public case coverage",
+      "stars": false
+    },
+    {
+      "title": "4.9 / 5 across 602 reviews",
+      "text": "Google and Avvo collection on Trustindex",
+      "stars": true
+    }
+  ],
+  "situations": {
+    "eyebrow": "Start Where You Are",
+    "heading": "What is happening right now?",
+    "intro": "The next step depends on the allegation, the court, and the deadline. Find the information that fits your situation.",
+    "items": [
+      {
+        "title": "I was arrested or have court soon.",
+        "text": "Understand the charge, release conditions, paperwork, and next appearance.",
+        "url": "#"
+      },
+      {
+        "title": "Police or federal agents contacted me.",
+        "text": "Get advice before an interview or a response to a subpoena.",
+        "url": "#"
+      },
+      {
+        "title": "I have a DWI, refusal, or vehicle case.",
+        "text": "Address the criminal case and any separate license issues.",
+        "url": "#"
+      },
+      {
+        "title": "I face a sex offense or Title IX allegation.",
+        "text": "Discuss the investigation, evidence, and restrictions that may affect you.",
+        "url": "#"
+      },
+      {
+        "title": "A family member was arrested.",
+        "text": "Gather the location, paperwork, and court information so the firm can help assess the next step.",
+        "url": "#"
+      },
+      {
+        "title": "I believe police violated my rights.",
+        "text": "Discuss the incident, available records, and potential civil rights claim.",
+        "url": "#"
+      }
+    ]
+  },
+  "results": {
+    "eyebrow": "The Firm's Work",
+    "heading": "Results when the stakes were high.",
+    "intro": "Selected outcomes reported in the firm's representative case record. Every matter turns on its own facts and law.",
+    "items": [
+      {
+        "outcome": "Charges dismissed",
+        "title": "Brooklyn domestic violence allegations",
+        "text": "The client faced assault, menacing, weapon and harassment allegations arising from a domestic complaint. The firm reports dismissal of the entire case.",
+        "url": "#"
+      },
+      {
+        "outcome": "Charges dismissed",
+        "title": "Third DWI allegation with an accident",
+        "text": "The firm reports dismissal of all charges in a matter described as a third DWI with an accident.",
+        "url": "#"
+      },
+      {
+        "outcome": "Dismissed and sealed",
+        "title": "Second-degree weapon possession allegation",
+        "text": "The firm reports dismissal and sealing of a case involving second-degree weapon possession.",
+        "url": "#"
+      },
+      {
+        "outcome": "Charges dropped",
+        "title": "Rape allegation: charges dropped",
+        "text": "The firm reports that all charges were dropped in this rape-charge matter.",
+        "url": "#"
+      },
+      {
+        "outcome": "Dismissed and sealed",
+        "title": "Two third-degree assault counts",
+        "text": "The firm reports dismissal and sealing of a case involving two counts of third-degree assault.",
+        "url": "#"
+      },
+      {
+        "outcome": "Acquittal and civil settlement",
+        "title": "Subway touching allegations and false arrest",
+        "text": "Russ Kofman tried a case involving forcible touching and third-degree sexual abuse allegations. The firm reports a not-guilty verdict and a later false-arrest settlement.",
+        "url": "#"
+      }
+    ],
+    "disclaimer": "Prior results do not guarantee a similar outcome. Every matter depends on its own facts and law.",
+    "buttonLabel": "View Representative Results",
+    "buttonUrl": "#"
+  },
+  "practice": {
+    "eyebrow": "Focused Representation",
+    "heading": "Focused Defense for Serious New York Matters",
+    "items": [
+      {
+        "title": "Criminal Defense",
+        "text": "Defense for arrests, felonies, weapons charges, domestic allegations, theft, assault, and investigations.",
+        "url": "#"
+      },
+      {
+        "title": "Federal Defense",
+        "text": "Representation in EDNY, SDNY, and federal investigations involving subpoenas, warrants, fraud, conspiracy, and forfeiture.",
+        "url": "#"
+      },
+      {
+        "title": "DWI Defense",
+        "text": "Help with criminal charges, license consequences, refusal hearings, chemical tests, video, and accidents.",
+        "url": "#"
+      },
+      {
+        "title": "Sex Crimes Defense",
+        "text": "Discreet representation involving investigations, arrests, digital evidence, and serious personal and professional consequences.",
+        "url": "#"
+      },
+      {
+        "title": "Fraud & White Collar",
+        "text": "Defense involving financial records, health care, banking, tax, wire, insurance, and benefit allegations.",
+        "url": "#"
+      },
+      {
+        "title": "Title IX Defense",
+        "text": "Representation in school investigations, hearings, interim restrictions, and disciplinary proceedings.",
+        "url": "#"
+      }
+    ],
+    "image": "/assets/russ-kofman.jpg",
+    "imageCaption": "Russ Kofman, Partner",
+    "imageLink": "Meet Russ",
+    "imageUrl": "#"
+  },
+  "team": {
+    "eyebrow": "Lebedin Kofman LLP",
+    "heading": "A Defense Team Built for Urgent, High Consequence Cases",
+    "primaryLabel": "Meet the Attorneys",
+    "primaryUrl": "#",
+    "secondaryLabel": "Why Clients Choose Us",
+    "secondaryUrl": "#",
+    "items": [
+      {
+        "title": "Direct attorney access",
+        "text": "Speak with a lawyer about the allegation, your immediate concerns, and the questions that matter to your situation."
+      },
+      {
+        "title": "Early intervention",
+        "text": "The firm represents clients before arrest, during investigations, and through court proceedings."
+      },
+      {
+        "title": "State and federal depth",
+        "text": "The team defends cases in New York courts and in EDNY and SDNY."
+      },
+      {
+        "title": "Clear strategy",
+        "text": "Get direct advice about exposure, evidence, deadlines, options, fees, and the next decision."
+      }
+    ]
+  },
+  "reviews": {
+    "eyebrow": "Client Perspectives",
+    "heading": "What clients say about the firm.",
+    "items": [
+      {
+        "quote": "At all times Russ and his associates were available for me and were extremely helpful and professional.",
+        "name": "Lain"
+      },
+      {
+        "quote": "He responded to all my questions quickly and allayed my worries.",
+        "name": "Peter"
+      },
+      {
+        "quote": "Arthur and his team took the time to carefully explain my options and they worked with me to find a solution.",
+        "name": "James Garland"
+      }
+    ],
+    "disclaimer": "Excerpts from reviews displayed on the firm's reviews page. Individual experiences and outcomes vary.",
+    "linkLabel": "Read the full client reviews",
+    "linkUrl": "#"
+  },
+  "steps": {
+    "eyebrow": "What Happens Next",
+    "heading": "What Happens When You Contact the Firm",
+    "items": [
+      {
+        "title": "Tell us the immediate issue.",
+        "text": "A name, telephone number, location, and short nonconfidential summary are enough to begin."
+      },
+      {
+        "title": "Speak with an attorney.",
+        "text": "Discuss urgent risks, deadlines, and the decisions you need to make."
+      },
+      {
+        "title": "Plan the defense.",
+        "text": "If retained, the firm begins the work appropriate to your case, including preserving evidence and preparing for the next court or agency step."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Your Next Step",
+    "heading": "Talk to a New York defense attorney.",
+    "intro": "Tell us the immediate issue and the best way to reach you. For an arrest, police contact, or an approaching court date, call the firm directly.",
+    "phoneNote": "Free consultation. Do not wait for a form response when a deadline is near.",
+    "submitLabel": "Request My Free Consultation",
+    "disclaimer": "Submitting this form does not create an attorney client relationship. Do not send highly sensitive documents or detailed confidential information through this form."
+  },
+  "faq": {
+    "eyebrow": "Common Questions",
+    "heading": "Before you contact us.",
+    "items": [
+      {
+        "question": "Should I speak to police or investigators before calling a lawyer?",
+        "answer": "Before discussing the allegations with police or investigators, ask to speak with a lawyer. Keep any paperwork you receive and contact us promptly. Tell the attorney who contacted you, what they requested, and whether you already made a statement. If the matter involves DWI or a request for a chemical test, explain that immediately because refusal can have separate license consequences."
+      },
+      {
+        "question": "Can the firm help before an arrest?",
+        "answer": "Yes. The firm represents people who are under investigation or have been contacted by police, federal agents, or other investigators. Contact us with any interview request, subpoena, notice, or deadline so an attorney can assess the situation and discuss an appropriate response. Have the agency name, contact information, and actual documents available. You do not need to wait for charging papers to request a consultation."
+      },
+      {
+        "question": "What should I bring to the consultation?",
+        "answer": "Have any court papers, summonses, notices, subpoenas, and upcoming dates available. Identify the court or agency and the best way to contact you. You can start with a short summary of the allegation and your immediate concern. Prepare a list of witnesses and records that may matter. Ask the attorney how to provide sensitive records or documents securely rather than uploading them through the inquiry form."
+      },
+      {
+        "question": "Can you help if I live outside New York?",
+        "answer": "The firm represents clients who live outside New York and have New York criminal matters or federal cases in EDNY or SDNY. Contact us to discuss the court, current status, and any appearance requirement. An initial consultation can take place by phone. Share your upcoming dates and travel concerns so the attorney can discuss the practical next steps based on the actual papers and circumstances."
+      },
+      {
+        "question": "How much does a criminal defense lawyer cost?",
+        "answer": "The initial consultation is free. Representation fees depend on the matter, its complexity, the court, and the work required. The firm will discuss the proposed scope and fees with you before you decide whether to retain counsel. Ask what work is included, what the next stage involves, and how payments are handled. The consultation is an opportunity to understand those terms and ask questions."
+      },
+      {
+        "question": "Do you offer payment plans?",
+        "answer": "The firm offers payment plans. Ask about the options for your matter during the consultation, including the amount due initially and the proposed schedule for later payments. The payment schedule and scope of representation should be set out in the written retainer agreement. Bring up any concern about timing before signing so you understand the arrangement and the work the firm is being retained to perform."
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Take the Next Step",
+    "titleMuted": "The Government Is Already Building Its Case.",
+    "title": "Start Building Your Defense.",
+    "text": "Call before speaking to police, prosecutors, investigators, a school, an employer, or an agency."
+  }
+}

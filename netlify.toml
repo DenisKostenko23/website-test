@@ -1,0 +1,8 @@
+[build]
+  # Static build without Tina Cloud. After connecting Tina Cloud (step 5 in SETUP.md)
+  # change this to "npm run build" so editors can log in online.
+  command = "npm run build:local"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

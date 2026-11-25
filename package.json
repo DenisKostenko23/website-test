@@ -1,0 +1,30 @@
+{
+  "name": "lebedin-kofman-site",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "dev": "tinacms dev -c \"astro dev\"",
+    "build": "tinacms build -c \"astro build\"",
+    "build:local": "tinacms build --local --skip-cloud-checks -c \"astro build\"",
+    "preview": "astro preview",
+    "postinstall": "node scripts/fix-tina-paths.mjs"
+  },
+  "dependencies": {
+    "@astrojs/netlify": "^7.0.13",
+    "@astrojs/node": "^10.1.4",
+    "@tinacms/astro": "^0.8.0",
+    "astro": "^6.4.4"
+  },
+  "devDependencies": {
+    "@tinacms/cli": "^4.0.4",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tinacms": "^3.15.0",
+    "typescript": "^6.0.3",
+    "vite": "^7.3.2"
+  }
+}

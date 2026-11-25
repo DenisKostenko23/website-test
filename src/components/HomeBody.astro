@@ -1,0 +1,243 @@
+---
+/**
+ * The whole homepage body. Every visible text carries `data-tina-field`, so
+ * clicking it in the editor opens the matching field on the left.
+ */
+import { tinaField } from '@tinacms/astro/tina-field';
+import Icon from './Icon.astro';
+import Pattern from './Pattern.astro';
+import ContactForm from './ContactForm.astro';
+import { getSite, items, pad, tel, type Home } from '../lib/data';
+
+interface Props { data?: Home | null }
+const { data } = Astro.props;
+if (!data) return;
+
+const { hero, situations: sit, results: res, practice: pr, team, reviews: rev, steps, contact: ct, faq, cta } = data;
+// The phone number lives in "Contacts & footer" so it is edited in one place.
+const site = (await getSite()).data?.site;
+const phone = site?.phone ?? '';
+const f = (obj: any, field?: string) => (obj ? tinaField(obj, field) : undefined);
+---
+
+{hero && (
+  <section class="hero">
+    <div class="hero__panel">
+      <Pattern />
+      <span class="chip" data-tina-field={f(hero, 'badge')}><Icon name="scale" size={16} />{hero.badge}</span>
+      <h1 class="display-l">
+        <span style="color:inherit" data-tina-field={f(hero, 'title')}>{hero.title}</span>
+        {' '}<span data-tina-field={f(hero, 'titleMuted')}>{hero.titleMuted}</span>
+      </h1>
+      <p class="body-m" data-tina-field={f(hero, 'text')}>{hero.text}</p>
+      <div class="hero__actions">
+        <a class="btn btn--light" href={tel(phone)}><Icon name="phone" />Call {phone}</a>
+        <a class="btn btn--outline-light" href="#contact" data-tina-field={f(hero, 'buttonLabel')}>{hero.buttonLabel} <Icon name="arrow-right" /></a>
+      </div>
+      <div class="hero__note body-s" data-tina-field={f(hero, 'note')}><Icon name="clock" />{hero.note}</div>
+    </div>
+    <div class="hero__media" data-tina-field={f(hero, 'image')}>
+      {hero.image && <img src={hero.image} alt="Arthur Lebedin and Russ Kofman" fetchpriority="high" />}
+      <div class="hero__caption glass">
+        <span class="heading-m" data-tina-field={f(hero, 'imageCaption')}>{hero.imageCaption}</span>
+        <span class="body-s" style="color:var(--text-inverse-secondary)" data-tina-field={f(hero, 'imageSubcaption')}>{hero.imageSubcaption}</span>
+      </div>
+    </div>
+  </section>
+)}
+
+<div class="trust">
+  {items(data.trust).map((t) => (
+    <div data-tina-field={f(t)}>
+      {t.stars && <span class="stars">{[1, 2, 3, 4, 5].map(() => <Icon name="star" class="star" />)}</span>}
+      <span class="title">{t.title}</span><span class="body-s secondary">{t.text}</span>
+    </div>
+  ))}
+</div>
+
+{sit && (
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="lead"><span class="eyebrow" data-tina-field={f(sit, 'eyebrow')}>{sit.eyebrow}</span><h2 class="display-m" data-tina-field={f(sit, 'heading')}>{sit.heading}</h2></div>
+        <p class="body-m secondary" data-tina-field={f(sit, 'intro')}>{sit.intro}</p>
+      </div>
+      <div class="grid-lines">
+        {items(sit.items).map((s, i) => (
+          <article class="sit-card" data-tina-field={f(s)}>
+            <div class="top"><span class="body-s muted">{pad(i)}</span>
+              <div class="text"><h3 class="heading-m">{s.title}</h3><p class="body-s secondary">{s.text}</p></div></div>
+            <a class="link-underline" href={s.url ?? '#'}>See what to do next <Icon name="arrow-right" /></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{res && (
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="lead"><span class="eyebrow" data-tina-field={f(res, 'eyebrow')}>{res.eyebrow}</span><h2 class="display-m" data-tina-field={f(res, 'heading')}>{res.heading}</h2></div>
+        <p class="body-m secondary" data-tina-field={f(res, 'intro')}>{res.intro}</p>
+      </div>
+      <div class="grid-lines">
+        {items(res.items).map((r) => (
+          <article class="res-card" data-tina-field={f(r)}>
+            <div class="top"><span class="heading-l">{r.outcome}</span>
+              <div class="text"><h3 class="title">{r.title}</h3><p class="body-s secondary">{r.text}</p></div></div>
+            <a class="inline-link" href={r.url ?? '#'}>Read the case result <Icon name="arrow-up-right" /></a>
+          </article>
+        ))}
+      </div>
+      <div class="row-between">
+        <p class="body-s muted" data-tina-field={f(res, 'disclaimer')}>{res.disclaimer}</p>
+        <a class="btn btn--light" href={res.buttonUrl ?? '#'} data-tina-field={f(res, 'buttonLabel')}>{res.buttonLabel} <Icon name="arrow-right" /></a>
+      </div>
+    </div>
+  </section>
+)}
+
+{pr && (
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="lead"><span class="eyebrow" data-tina-field={f(pr, 'eyebrow')}>{pr.eyebrow}</span><h2 class="display-m" data-tina-field={f(pr, 'heading')}>{pr.heading}</h2></div>
+      </div>
+      <div class="practice">
+        <div class="practice__list">
+          {items(pr.items).map((p, i) => (
+            <a class="practice__row" href={p.url ?? '#'} data-tina-field={f(p)}>
+              <span class="body-m muted">{pad(i)}.</span>
+              <div class="text"><h3 class="heading-l">{p.title}</h3><p class="body-m secondary">{p.text}</p></div>
+              <Icon name="arrow-right" />
+            </a>
+          ))}
+        </div>
+        <a class="russ" href={pr.imageUrl ?? '#'} data-tina-field={f(pr, 'image')}>
+          {pr.image && <img src={pr.image} alt={pr.imageCaption ?? ''} loading="lazy" />}
+          <div class="glass">
+            <span class="title" data-tina-field={f(pr, 'imageCaption')}>{pr.imageCaption}</span>
+            <span class="inline-link" data-tina-field={f(pr, 'imageLink')}>{pr.imageLink} <Icon name="arrow-right" /></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+)}
+
+{team && (
+  <section class="section subtle">
+    <div class="container">
+      <div class="section-header">
+        <div class="lead"><span class="eyebrow" data-tina-field={f(team, 'eyebrow')}>{team.eyebrow}</span><h2 class="display-m" data-tina-field={f(team, 'heading')}>{team.heading}</h2></div>
+        <div class="hero__actions">
+          <a class="btn btn--dark" href={team.primaryUrl ?? '#'} data-tina-field={f(team, 'primaryLabel')}>{team.primaryLabel} <Icon name="arrow-right" /></a>
+          <a class="btn btn--outline-dark" href={team.secondaryUrl ?? '#'} data-tina-field={f(team, 'secondaryLabel')}>{team.secondaryLabel}</a>
+        </div>
+      </div>
+      <div class="cols-4">
+        {items(team.items).map((t, i) => (
+          <div class="line-item" data-tina-field={f(t)}><span class="body-s muted">{pad(i)}</span><h3 class="heading-m">{t.title}</h3><p class="body-s secondary">{t.text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{rev && (
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="lead"><span class="eyebrow" data-tina-field={f(rev, 'eyebrow')}>{rev.eyebrow}</span><h2 class="display-m" data-tina-field={f(rev, 'heading')}>{rev.heading}</h2></div>
+      </div>
+      <div class="cols-3" style="gap:24px">
+        {items(rev.items).map((q) => (
+          <figure class="quote" data-tina-field={f(q)}>
+            <span class="stars">{[1, 2, 3, 4, 5].map(() => <Icon name="star" class="star" />)}</span>
+            <blockquote class="heading-m">“{q.quote}”</blockquote>
+            <figcaption><div class="label-m">{q.name}</div><div class="body-s secondary">Public client review</div></figcaption>
+          </figure>
+        ))}
+      </div>
+      <div class="row-between">
+        <p class="body-s muted" data-tina-field={f(rev, 'disclaimer')}>{rev.disclaimer}</p>
+        <a class="link-underline" href={rev.linkUrl ?? '#'} style="min-width:300px" data-tina-field={f(rev, 'linkLabel')}>{rev.linkLabel} <Icon name="arrow-right" /></a>
+      </div>
+    </div>
+  </section>
+)}
+
+{steps && (
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="lead"><span class="eyebrow" data-tina-field={f(steps, 'eyebrow')}>{steps.eyebrow}</span><h2 class="display-m" data-tina-field={f(steps, 'heading')}>{steps.heading}</h2></div>
+      </div>
+      <div class="cols-3">
+        {items(steps.items).map((s, i) => (
+          <div class="line-item" data-tina-field={f(s)}><span class="step-num">{pad(i)}</span><h3 class="heading-m">{s.title}</h3><p class="body-s secondary">{s.text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{ct && (
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact">
+        <div class="contact__left">
+          <span class="eyebrow" data-tina-field={f(ct, 'eyebrow')}>{ct.eyebrow}</span>
+          <h2 class="display-m" data-tina-field={f(ct, 'heading')}>{ct.heading}</h2>
+          <p class="body-m secondary" data-tina-field={f(ct, 'intro')}>{ct.intro}</p>
+          <div class="phone-block">
+            <a href={tel(phone)}><Icon name="phone" /><span class="display-s">{phone}</span></a>
+            <p class="body-s secondary" data-tina-field={f(ct, 'phoneNote')}>{ct.phoneNote}</p>
+          </div>
+        </div>
+        <ContactForm submitLabel={ct.submitLabel} disclaimer={ct.disclaimer} fields={{ submit: f(ct, 'submitLabel'), disclaimer: f(ct, 'disclaimer') }} />
+      </div>
+    </div>
+  </section>
+)}
+
+{faq && (
+  <section class="section subtle">
+    <div class="container">
+      <div class="faq">
+        <div class="lead" style="display:flex;flex-direction:column;gap:20px">
+          <span class="eyebrow" data-tina-field={f(faq, 'eyebrow')}>{faq.eyebrow}</span>
+          <h2 class="display-m" data-tina-field={f(faq, 'heading')}>{faq.heading}</h2>
+        </div>
+        <div class="faq__list">
+          {items(faq.items).map((q) => (
+            <details data-tina-field={f(q)}>
+              <summary class="title">{q.question}<Icon name="plus" /></summary>
+              <p class="body-m secondary">{q.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+{cta && (
+  <section class="cta dark">
+    <Pattern />
+    <div class="cta__inner">
+      <span class="eyebrow" data-tina-field={f(cta, 'eyebrow')}>{cta.eyebrow}</span>
+      <h2 class="display-l">
+        <span data-tina-field={f(cta, 'titleMuted')}>{cta.titleMuted}</span>{' '}
+        <span style="color:inherit" data-tina-field={f(cta, 'title')}>{cta.title}</span>
+      </h2>
+      <p class="body-l" data-tina-field={f(cta, 'text')}>{cta.text}</p>
+      <div class="hero__actions" style="justify-content:center">
+        <a class="btn btn--light" href={tel(phone)}><Icon name="phone" />Call {phone}</a>
+        <a class="btn btn--outline-light" href="#contact">{hero?.buttonLabel ?? 'Request a Free Consultation'} <Icon name="arrow-right" /></a>
+      </div>
+    </div>
+  </section>
+)}

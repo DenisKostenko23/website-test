@@ -1,0 +1,17 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import Icon from './Icon.astro';
+import { tel, type Site } from '../lib/data';
+
+interface Props { site?: Site | null }
+const { site } = Astro.props;
+---
+<header class="header">
+  <a href="/"><img class="logo logo--dark" src="/assets/logo.svg" alt="Lebedin Kofman LLP" /></a>
+  <div class="actions">
+    <a class="btn btn--outline-dark" href={tel(site?.phone)} data-tina-field={site ? tinaField(site, 'phone') : undefined}>
+      <Icon name="phone" /><span>Call</span>
+    </a>
+    <button class="btn btn--dark" type="button">Menu <Icon name="menu" /></button>
+  </div>
+</header>
