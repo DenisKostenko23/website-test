@@ -275,3 +275,55 @@
   .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .thanks { min-height: 70vh; display: flex; align-items: center; }
   .thanks .container { gap: 24px; align-items: flex-start; }
+
+  /* Motion. Only runs when <html> has .motion (set in Motion.astro). */
+  :root { --ease-out: cubic-bezier(.22, 1, .36, 1); }
+  @media (prefers-reduced-motion: no-preference) {
+    /* Hero entrance */
+    .motion .header { animation: fade-down .6s var(--ease-out) both; }
+    .motion .hero__panel > :not(.pattern) { animation: rise .9s var(--ease-out) both; }
+    .motion .hero__panel > :nth-child(2) { animation-delay: .05s; }
+    .motion .hero__panel > :nth-child(3) { animation-delay: .15s; }
+    .motion .hero__panel > :nth-child(4) { animation-delay: .25s; }
+    .motion .hero__panel > :nth-child(5) { animation-delay: .35s; }
+    .motion .hero__panel > :nth-child(6) { animation-delay: .45s; }
+    .motion .hero__media { animation: fade 1s ease-out both; }
+    .motion .hero__media img { animation: settle 1.6s var(--ease-out) both; }
+    .motion .hero__caption { animation: rise .9s var(--ease-out) .6s both; }
+    .motion .pattern rect { animation: fade 2s ease-out both; }
+
+    /* Scroll reveals */
+    .motion :is(.section-header, .grid-lines > *, .practice__row, .russ, .cols-3 > *, .cols-4 > *, .row-between,
+                .contact__left, .form, .faq .lead, .faq details, .cta__inner > *, .trust > *, .footer__top) {
+      transition: opacity .8s var(--ease-out) var(--reveal-delay, 0s), transform .8s var(--ease-out) var(--reveal-delay, 0s),
+                  background .2s, border-color .2s, padding .2s;
+    }
+    .motion :is(.section-header, .grid-lines > *, .practice__row, .russ, .cols-3 > *, .cols-4 > *, .row-between,
+                .contact__left, .form, .faq .lead, .faq details, .cta__inner > *, .trust > *, .footer__top):not(.in) {
+      opacity: 0; transform: translateY(24px);
+    }
+
+    /* Hover details */
+    .sit-card { transition: background .25s; }
+    .sit-card:hover { background: var(--surface-subtle); }
+    .sit-card:hover .link-underline svg { transform: translateX(4px); }
+    .res-card .inline-link svg { transition: transform .2s; }
+    .res-card:hover .inline-link svg { transform: translate(3px, -3px); }
+    .btn svg:has(use[href$="arrow-right"]) { transition: transform .2s var(--ease-out); }
+    .btn:hover svg:has(use[href$="arrow-right"]) { transform: translateX(4px); }
+    .practice__row > .icon { transition: transform .2s var(--ease-out); }
+    .practice__row:hover > .icon { transform: translateX(4px); }
+    .russ img { transition: transform .8s var(--ease-out); }
+    .russ:hover img { transform: scale(1.03); }
+    .quote { transition: border-color .25s; }
+    .quote:hover { border-color: var(--border-strong); }
+
+    /* FAQ opens smoothly where the browser supports it */
+    :root { interpolate-size: allow-keywords; }
+    .faq details::details-content { block-size: 0; overflow: hidden; transition: block-size .35s var(--ease-out), content-visibility .35s allow-discrete; }
+    .faq details[open]::details-content { block-size: auto; }
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fade-down { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: none; } }
+  @keyframes settle { from { transform: translateX(-50%) scale(1.06); } to { transform: translateX(-50%) scale(1); } }

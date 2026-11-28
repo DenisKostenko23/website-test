@@ -1,0 +1,44 @@
+---
+/**
+ * Page motion: hero entrance, scroll reveals and hover details.
+ * Styles live in global.css under "Motion". Everything is off when the
+ * visitor prefers reduced motion, and inside the Tina editor (an iframe),
+ * so editing is never blocked by hidden content.
+ */
+---
+<script is:inline>
+  // Runs before first paint so revealed blocks never flash.
+  (function () {
+    var ok = window.self === window.top && 'IntersectionObserver' in window &&
+      matchMedia('(prefers-reduced-motion: no-preference)').matches;
+    if (ok) document.documentElement.classList.add('motion');
+  })();
+</script>
+
+<script>
+  const SELECTOR = [
+    '.section-header', '.grid-lines > *', '.practice__row', '.russ', '.cols-3 > *', '.cols-4 > *',
+    '.row-between', '.contact__left', '.form', '.faq .lead', '.faq details', '.cta__inner > *',
+    '.trust > *', '.footer__top',
+  ].join(',');
+
+  const root = document.documentElement;
+  if (root.classList.contains('motion')) {
+    const io = new IntersectionObserver((entries) => {
+      // Stagger the items that enter together, left to right / top to bottom.
+      const shown = entries.filter((e) => e.isIntersecting).map((e) => e.target as HTMLElement);
+      shown.forEach((el, i) => {
+        el.style.setProperty('--reveal-delay', `${Math.min(i, 5) * 80}ms`);
+        el.classList.add('in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+
+    const watch = (scope: ParentNode) =>
+      scope.querySelectorAll<HTMLElement>(SELECTOR).forEach((el) => { if (!el.classList.contains('in')) io.observe(el); });
+    watch(document);
+
+    // Safety net: never leave content hidden (e.g. print, very tall blocks).
+    addEventListener('beforeprint', () => document.querySelectorAll(SELECTOR).forEach((el) => el.classList.add('in')));
+  }
+</script>
