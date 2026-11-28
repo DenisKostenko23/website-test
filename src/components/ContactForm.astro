@@ -15,6 +15,7 @@ const { submitLabel, disclaimer, fields = {} } = Astro.props;
 const matters = ['Criminal charge', 'Federal investigation', 'DWI or vehicle', 'Sex offense', 'Fraud or white collar', 'Title IX or discipline', 'Civil rights', 'Other'];
 const prefs = ['Phone call', 'Text message', 'Email'];
 ---
+<div class="form-wrap" data-consultation>
 <form class="form" name="consultation" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field">
   <input type="hidden" name="form-name" value="consultation" />
   <p class="visually-hidden"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
@@ -39,6 +40,57 @@ const prefs = ['Phone call', 'Text message', 'Email'];
       {prefs.map((p, i) => <label class="option"><input type="radio" name="contact_preference" value={p} checked={i === 0} />{p}</label>)}
     </div>
   </fieldset>
+  <p class="form__error caption" role="alert" hidden>Something went wrong and your request was not sent. Please try again or call the firm directly.</p>
   <button class="btn btn--dark btn--block" type="submit" data-tina-field={fields.submit}>{submitLabel} <Icon name="arrow-right" /></button>
   <p class="disclaimer caption" data-tina-field={fields.disclaimer}><Icon name="lock" />{disclaimer}</p>
 </form>
+<div class="form form-success" tabindex="-1" role="status" hidden>
+  <span class="form-success__icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+  </span>
+  <span class="eyebrow">Request received</span>
+  <h3 class="heading-l">Thank you. An attorney will contact you shortly.</h3>
+  <p class="body-m secondary">If you were arrested, contacted by police, or have a court date soon, call the firm now.</p>
+  <button class="btn btn--outline-dark" type="button" data-reset>Send another request</button>
+</div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-consultation]').forEach((wrap) => {
+    const form = wrap.querySelector<HTMLFormElement>('form')!;
+    const success = wrap.querySelector<HTMLElement>('.form-success')!;
+    const error = wrap.querySelector<HTMLElement>('.form__error')!;
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      error.hidden = true;
+      submit.disabled = true;
+      submit.setAttribute('aria-busy', 'true');
+      try {
+        const body = new URLSearchParams(new FormData(form) as any).toString();
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body,
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        form.hidden = true;
+        success.hidden = false;
+        success.focus();
+      } catch {
+        error.hidden = false;
+      } finally {
+        submit.disabled = false;
+        submit.removeAttribute('aria-busy');
+      }
+    });
+
+    wrap.querySelector('[data-reset]')?.addEventListener('click', () => {
+      success.hidden = true;
+      form.hidden = false;
+      form.querySelector<HTMLInputElement>('input:not([type="hidden"]):not([name="bot-field"])')?.focus();
+    });
+  });
+</script>
