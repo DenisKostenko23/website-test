@@ -1,5 +1,32 @@
 {
   "phone": "646 663 4430",
+  "nav": [
+    {
+      "label": "Practice Areas",
+      "url": "/#practice"
+    },
+    {
+      "label": "Results",
+      "url": "/#results"
+    },
+    {
+      "label": "Our Team",
+      "url": "/#team"
+    },
+    {
+      "label": "Reviews",
+      "url": "/#reviews"
+    },
+    {
+      "label": "FAQ",
+      "url": "/#faq"
+    },
+    {
+      "label": "Contact",
+      "url": "/#contact"
+    }
+  ],
+  "consultLabel": "Free Consultation",
   "footer": {
     "tagline": "Criminal, federal, DWI, and disciplinary defense in New York.",
     "availability": "Available 24/7 for urgent criminal matters.",

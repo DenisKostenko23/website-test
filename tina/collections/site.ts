@@ -29,6 +29,8 @@ export const SiteCollection: Collection = {
       description: 'Shown in the header, buttons and footer. Example: 646 663 4430',
       required: true,
     },
+    { ...link('Menu links (header)'), name: 'nav' },
+    { type: 'string', name: 'consultLabel', label: 'Header button text', description: 'Dark button in the header, leads to the contact form.' },
     {
       type: 'object',
       name: 'footer',

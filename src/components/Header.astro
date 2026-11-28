@@ -1,17 +1,73 @@
 ---
+/**
+ * Sticky site header. Desktop shows the full menu; from tablet down the links
+ * move into a panel opened by the Menu button. Links are edited in
+ * "Contacts & footer" → "Menu links (header)".
+ */
 import { tinaField } from '@tinacms/astro/tina-field';
 import Icon from './Icon.astro';
-import { tel, type Site } from '../lib/data';
+import { items, tel, type Site } from '../lib/data';
 
 interface Props { site?: Site | null }
 const { site } = Astro.props;
+const nav = items(site?.nav);
+const consult = site?.consultLabel || 'Free Consultation';
+const f = (obj: any, field?: string) => (obj ? tinaField(obj, field) : undefined);
 ---
 <header class="header">
-  <a href="/"><img class="logo logo--dark" src="/assets/logo.svg" alt="Lebedin Kofman LLP" /></a>
-  <div class="actions">
-    <a class="btn btn--outline-dark" href={tel(site?.phone)} data-tina-field={site ? tinaField(site, 'phone') : undefined}>
-      <Icon name="phone" /><span>Call</span>
-    </a>
-    <button class="btn btn--dark" type="button">Menu <Icon name="menu" /></button>
+  <div class="header__bar">
+    <a href="/" class="header__logo"><img class="logo logo--dark" src="/assets/logo.svg" alt="Lebedin Kofman LLP" /></a>
+
+    <nav class="header__nav" aria-label="Main">
+      {nav.map((l) => <a href={l.url ?? '#'} data-tina-field={f(l)}>{l.label}</a>)}
+    </nav>
+
+    <div class="actions">
+      <a class="btn btn--outline-dark header__call" href={tel(site?.phone)} data-tina-field={f(site, 'phone')}>
+        <Icon name="phone" /><span>{site?.phone ?? 'Call'}</span>
+      </a>
+      <a class="btn btn--dark header__cta" href="/#contact" data-tina-field={f(site, 'consultLabel')}>{consult}</a>
+      <button class="btn btn--dark header__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="header__toggle-open">Menu <Icon name="menu" /></span>
+        <span class="header__toggle-close">Close <Icon name="close" /></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <nav aria-label="Mobile">
+      {nav.map((l) => <a href={l.url ?? '#'}>{l.label}<Icon name="arrow-right" /></a>)}
+    </nav>
+    <div class="mobile-menu__actions">
+      <a class="btn btn--dark btn--block" href={tel(site?.phone)}><Icon name="phone" />Call {site?.phone}</a>
+      <a class="btn btn--outline-dark btn--block" href="/#contact">{consult}</a>
+    </div>
   </div>
 </header>
+
+<script>
+  // Delegated on document so it keeps working when the CMS re-renders the header.
+  const setOpen = (header: Element, open: boolean) => {
+    header.classList.toggle('is-open', open);
+    header.querySelector('.header__toggle')?.setAttribute('aria-expanded', String(open));
+    document.documentElement.classList.toggle('menu-open', open);
+  };
+  document.addEventListener('click', (e) => {
+    const t = e.target as Element;
+    const header = t.closest('.header');
+    if (!header) return;
+    if (t.closest('.header__toggle')) setOpen(header, !header.classList.contains('is-open'));
+    else if (t.closest('.mobile-menu a')) setOpen(header, false);
+  });
+  document.addEventListener('keydown', (e) => {
+    const header = document.querySelector('.header.is-open');
+    if (e.key === 'Escape' && header) {
+      setOpen(header, false);
+      (header.querySelector('.header__toggle') as HTMLElement | null)?.focus();
+    }
+  });
+  matchMedia('(min-width: 1101px)').addEventListener('change', (m) => {
+    const header = document.querySelector('.header.is-open');
+    if (m.matches && header) setOpen(header, false);
+  });
+</script>

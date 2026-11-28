@@ -76,7 +76,7 @@ const f = (obj: any, field?: string) => (obj ? tinaField(obj, field) : undefined
 )}
 
 {res && (
-  <section class="section dark">
+  <section class="section dark" id="results">
     <div class="container">
       <div class="section-header">
         <div class="lead"><span class="eyebrow" data-tina-field={f(res, 'eyebrow')}>{res.eyebrow}</span><h2 class="display-m" data-tina-field={f(res, 'heading')}>{res.heading}</h2></div>
@@ -100,7 +100,7 @@ const f = (obj: any, field?: string) => (obj ? tinaField(obj, field) : undefined
 )}
 
 {pr && (
-  <section class="section">
+  <section class="section" id="practice">
     <div class="container">
       <div class="section-header">
         <div class="lead"><span class="eyebrow" data-tina-field={f(pr, 'eyebrow')}>{pr.eyebrow}</span><h2 class="display-m" data-tina-field={f(pr, 'heading')}>{pr.heading}</h2></div>
@@ -128,7 +128,7 @@ const f = (obj: any, field?: string) => (obj ? tinaField(obj, field) : undefined
 )}
 
 {team && (
-  <section class="section subtle">
+  <section class="section subtle" id="team">
     <div class="container">
       <div class="section-header">
         <div class="lead"><span class="eyebrow" data-tina-field={f(team, 'eyebrow')}>{team.eyebrow}</span><h2 class="display-m" data-tina-field={f(team, 'heading')}>{team.heading}</h2></div>
@@ -147,7 +147,7 @@ const f = (obj: any, field?: string) => (obj ? tinaField(obj, field) : undefined
 )}
 
 {rev && (
-  <section class="section">
+  <section class="section" id="reviews">
     <div class="container">
       <div class="section-header">
         <div class="lead"><span class="eyebrow" data-tina-field={f(rev, 'eyebrow')}>{rev.eyebrow}</span><h2 class="display-m" data-tina-field={f(rev, 'heading')}>{rev.heading}</h2></div>
@@ -204,7 +204,7 @@ const f = (obj: any, field?: string) => (obj ? tinaField(obj, field) : undefined
 )}
 
 {faq && (
-  <section class="section subtle">
+  <section class="section subtle" id="faq">
     <div class="container">
       <div class="faq">
         <div class="lead" style="display:flex;flex-direction:column;gap:20px">
