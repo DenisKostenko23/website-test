@@ -29,7 +29,7 @@ const f = (obj: any, field?: string) => (obj ? tinaField(obj, field) : undefined
         <span style="color:inherit" data-tina-field={f(hero, 'title')}>{hero.title}</span>
         {' '}<span data-tina-field={f(hero, 'titleMuted')}>{hero.titleMuted}</span>
       </h1>
-      <p class="body-m" data-tina-field={f(hero, 'text')}>{hero.text}</p>
+      {hero.text && <p class="body-m" data-tina-field={f(hero, 'text')}>{hero.text}</p>}
       <div class="hero__actions">
         <a class="btn btn--light" href={tel(phone)}><Icon name="phone" />Call {phone}</a>
         <a class="btn btn--outline-light" href="#contact" data-tina-field={f(hero, 'buttonLabel')}>{hero.buttonLabel} <Icon name="arrow-right" /></a>
