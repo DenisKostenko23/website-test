@@ -169,6 +169,13 @@
   .option:has(input:focus-visible) { outline: 2px solid var(--border-strong); outline-offset: 2px; }
   .option:has(input:checked) { background: var(--surface-inverse); color: var(--text-inverse); border-color: var(--surface-inverse); }
   .option input:checked { border: 5px solid var(--neutral-0); background: var(--surface-inverse); }
+  .form[hidden] { display: none; }
+  .form__error { color: #b42318; }
+  .form__error[hidden] { display: none; }
+  .form .btn:disabled { opacity: .6; cursor: progress; }
+  .form-success { align-items: flex-start; gap: 16px; padding: 64px 48px; outline: none; }
+  .form-success__icon { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: var(--surface-inverse); color: var(--text-inverse); margin-bottom: 8px; }
+  .form-success .btn { margin-top: 16px; }
   .disclaimer { display: flex; gap: 8px; color: var(--text-muted); }
   .disclaimer .icon { width: 16px; height: 16px; flex: none; color: var(--text-secondary); }
 
